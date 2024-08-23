@@ -26,11 +26,9 @@ export class WebhookController extends EventController implements EventControlle
       data.webhook.events = [];
     } else {
       if (0 === data.webhook.events.length) {
-        data.webhook.events = this.events;
+        data.webhook.events = EventController.events;
       }
     }
-
-    console.log('data.webhook', data);
 
     return this.prisma.webhook.upsert({
       where: {
